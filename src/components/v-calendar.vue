@@ -5,31 +5,11 @@
         <!-- 日期选择器 -->
         <div v-if="type!='time'" class="picker-modal" :class="{'active':showCalendar}">
           <div class="picker-modal-header">
-            <div
-              class="picker-icon picker-icon-zuozuo"
-              :hover-stay-time="100"
-              hover-class="picker-icon-active"
-              @click="onSetYear('-1')"
-            ></div>
-            <div
-              class="picker-icon picker-icon-zuo"
-              :hover-stay-time="100"
-              hover-class="picker-icon-active"
-              @click="onSetMonth('-1')"
-            ></div>
+            <div class="picker-icon picker-icon-zuozuo" @click="onSetYear('-1')"></div>
+            <div class="picker-icon picker-icon-zuo" @click="onSetMonth('-1')"></div>
             <span class="picker-modal-header-title">{{title}}</span>
-            <div
-              class="picker-icon picker-icon-you"
-              :hover-stay-time="100"
-              hover-class="picker-icon-active"
-              @click="onSetMonth('+1')"
-            ></div>
-            <div
-              class="picker-icon picker-icon-youyou"
-              :hover-stay-time="100"
-              hover-class="picker-icon-active"
-              @click="onSetYear('+1')"
-            ></div>
+            <div class="picker-icon picker-icon-you" @click="onSetMonth('+1')"></div>
+            <div class="picker-icon picker-icon-youyou" @click="onSetYear('+1')"></div>
           </div>
           <div class="picker-modal-info">
             <template v-if="isMultiSelect">
@@ -39,8 +19,6 @@
                 <div
                   v-if="isContainTime"
                   class="picker-display-link"
-                  :hover-stay-time="100"
-                  hover-class="picker-display-link-active"
                   :style="{color}"
                   @click="onShowTimePicker('begin')"
                 >{{BeginTimeTitle}}</div>
@@ -51,8 +29,6 @@
                 <div
                   v-if="isContainTime"
                   class="picker-display-link"
-                  :hover-stay-time="100"
-                  hover-class="picker-display-link-active"
                   :style="{color}"
                   @click="onShowTimePicker('end')"
                 >{{EndTimeTitle}}</div>
@@ -65,8 +41,6 @@
                 <div
                   v-if="isContainTime"
                   class="picker-display-link"
-                  :hover-stay-time="100"
-                  hover-class="picker-display-link-active"
                   :style="{color}"
                   @click="onShowTimePicker('begin')"
                 >{{BeginTimeTitle}}</div>
@@ -122,7 +96,7 @@
           </swiper>
           <div class="picker-modal-footer">
             <div class="picker-footer-btn-box">
-              <!-- <view class="picker-btn picker-cancel-btn" :hover-stay-time="100" hover-class="picker-btn-active" @click="onCancel">取消</view> -->
+              <!-- <view class="picker-btn picker-cancel-btn"  @click="onCancel">取消</view> -->
               <div
                 class="picker-sure-btn"
                 :hover-stay-time="100"
@@ -147,19 +121,8 @@
                 </div>
               </div>
               <div class="picker-modal-footer-btn">
-                <div
-                  class="picker-btn"
-                  :hover-stay-time="100"
-                  hover-class="picker-btn-active"
-                  @click="onCancelTime"
-                >取消</div>
-                <div
-                  class="picker-btn"
-                  :style="{color}"
-                  :hover-stay-time="100"
-                  hover-class="picker-btn-active"
-                  @click="onConfirmTime"
-                >确定</div>
+                <div class="picker-btn" @click="onCancelTime">取消</div>
+                <div class="picker-btn" :style="{color}" @click="onConfirmTime">确定</div>
               </div>
             </div>
           </div>
