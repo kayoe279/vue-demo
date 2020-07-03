@@ -1,2 +1,0 @@
-webpackJsonp([14],{yCWg:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r={name:"FirstThree",data:function(){return{msg:"第一个页面的子页面的子页面11111111111111111111111111"}},methods:{goBack:function(){this.$router.go(-1)}}},s=function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticClass:"hello"},[n("h1",[e._v(e._s(e.msg))])])},l=[],u={render:s,staticRenderFns:l},a=u,o=n("VU/8"),c=o(r,a,!1,null,null,null);t.default=c.exports}});
-//# sourceMappingURL=14.de4e04019e69714fe570.js.map
