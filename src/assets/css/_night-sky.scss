@@ -1,8 +1,0 @@
-$global-color:blue !default;
-$border-global: 0.015rem solid #e0e0e0;
-$global-button-radius:0.12rem;
-// default 默认值 无声明用这个
-// 作为局部文件引用 _文件名不会编译成css
-// .mySlider li{
-//     border:1px solid $global-color;
-// }

@@ -10,77 +10,99 @@ export default new Router({
       path: '/',
       alias: '/index',
       name: 'Index',
-      component: () => import('@/pages/Index')
+      component: () => import('@/views/Index'),
+      meta: { title: "首页" }
     },
     {
       path: "/first",
       name: "First",
-      component: () => import('../pages/First'),
+      component: () => import('../views/First'),
+      redirect: "/first/firstTwo/firstThree",
       children: [
         {
           path: "/first/firstTwo",
           name: "FirstTwo",
-          component: () => import('../pages/subPage/FirstTwo.vue'),
+          component: () => import('../views/subPage/FirstTwo.vue'),
           children: [
             {
               path: '/first/firstTwo/firstThree',
               name: 'FirstThree',
-              component: () => import('../pages/subPage/childPage/FirstThree')
+              component: () => import('../views/subPage/childPage/FirstThree')
             },
             {
               path: '/first/firstTwo/secondThree',
               name: 'SecondThree',
-              component: () => import('../pages/subPage/childPage/SecondThree.vue')
+              component: () => import('../views/subPage/childPage/SecondThree.vue')
             }
           ]
         },
         {
           path: "/first/secondTwo",
           name: "SecondTwo",
-          component: () => import('../pages/subPage/SecondTwo.vue')
+          component: () => import('../views/subPage/SecondTwo.vue')
         }
       ]
     },
     {
       path: "/second",
       name: "Second",
-      component: () => import('../pages/Second'),
+      component: () => import('../views/Second'),
       children: [
         {
           path: "/second/secondTwo",
           name: "SecondTwo2",
-          component: () => import('../pages/subPage/SecondTwo.vue')
+          component: () => import('../views/subPage/SecondTwo.vue')
         }
       ]
     },
     {
       path: '/waterfall',
       name: 'waterfall',
-      component: () => import('../pages/waterfall.vue')
+      component: () => import('../views/waterfall.vue')
     },
     {
       path: '/testPage',
       name: 'testPage',
-      component: () => import('../pages/testPage.vue')
+      component: () => import('../views/testPage.vue')
     },
     {
       path: '/vantTest',
       name: 'vantTest',
-      component: () => import('../pages/vantTest.vue')
+      component: () => import('../views/test/vantTest.vue')
     },
     {
-      path: '/customComTest',
-      name: 'customComTest',
-      component: () => import('../pages/customComTest.vue')
+      path: '/popupTest',
+      name: 'popupTest',
+      component: () => import('../views/test/popupTest.vue'),
+      meta: { title: "Popup弹出层" }
     },
     {
       path: '/loadingTest',
       name: 'loadingTest',
-      component: () => import('../pages/loadingTest.vue')
+      component: () => import('../views/test/loadingTest.vue'),
+      meta: { title: "Loading加载提示" }
+    },
+    {
+      path: '/toastTest',
+      name: 'toastTest',
+      component: () => import('../views/test/toastTest.vue'),
+      meta: { title: "Toast轻提示" }
+    },
+    {
+      path: '/modalTest',
+      name: 'modalTest',
+      component: () => import('../views/test/modalTest.vue'),
+      meta: { title: "Modal模态框" }
+    },
+    {
+      path: '/calendarTest',
+      name: 'calendarTest',
+      component: () => import('../views/test/calendarTest.vue'),
+      meta: { title: "Calendar日历" }
     },
     {
       path: "*",
-      component: () => import('../pages/Error'),
+      component: () => import('../views/Error'),
       hidden: true
     }
   ]

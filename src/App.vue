@@ -14,7 +14,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~./assets/css/_night-sky.scss";
 
 @font-face {
   font-family: "PingFang Regular";
@@ -29,6 +28,8 @@ html,
   text-align: center;
   font-size: 0.28rem;
   font-family: "PingFang Regular";
+  line-height: 1.2 !important;
+  overflow-y:auto !important;
 }
 button {
   font-family: "PingFang Regular" !important;

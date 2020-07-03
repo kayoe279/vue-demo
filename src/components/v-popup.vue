@@ -12,7 +12,6 @@
       :class="[
 				showDrawer ? 'v-drawer-content-visible' : '',
 				'v-drawer-' + mode,
-				mode == 'center' ? 'v-animation-zoom' : ''
 			]"
       @touchmove.stop.prevent
       @tap.stop.prevent
@@ -20,6 +19,7 @@
     >
       <div
         class="v-mode-center-box"
+        :class="mode == 'center' ? 'v-animation-zoom' : ''"
         @tap.stop.prevent
         @touchmove.stop.prevent
         v-if="mode == 'center'"
@@ -40,9 +40,10 @@
 /**
  * popup 弹窗
  * @description 弹出层容器，支持上、下、左、右和中部弹出
- * @property {Boolean} show 绑定显示/隐藏
+ * @property {Boolean} value v-model绑定值,显示/隐藏
  * @property {String} mode 弹出方向（默认left）
- * @property {Boolean} maskCloseAble 是否显示遮罩（默认true）
+ * @property {Boolean} mask 是否显示遮罩（默认true）
+ * @property {Boolean} maskCloseAble 是点击示遮罩关闭（默认true）
  * @property {Number | String} borderRadius 弹窗圆角值（默认0）
  * @property {String} width 宽度
  * @property {String} height 高度
@@ -53,7 +54,7 @@ export default {
   name: "vPopup",
   props: {
     //绑定的值
-    show: {
+    value: {
       type: Boolean,
       default: false
     },
@@ -147,17 +148,18 @@ export default {
       let style = {
         width: this.width ? this.getUnitValue(this.width) : "auto",
         height: this.height ? this.getUnitValue(this.height) : "auto",
-        "max-width": "80%"
+        "max-width": "80%",
+        "max-height": "80%"
       };
       if (this.borderRadius) {
-        style.borderRadius = `${this.borderRadius}px`;
+        style.borderRadius = `${this.borderRadius}px` || '6px';
         style.overflow = "hidden";
       }
       return style;
     }
   },
   watch: {
-    show(val) {
+    value(val) {
       if (val) {
         this.open();
       } else {
@@ -178,7 +180,8 @@ export default {
     },
     close() {
       this.showDrawer = false;
-      this.$emit("update:show", false); // 修改父组件的值
+      // this.$emit("update:show", false); // 修改父组件的值
+      this.$emit("input", false); // 修改父组件的值
       this.$emit("close");
     },
     // 中部弹出时(mode=center)，u-drawer-content元素会铺满屏幕，点击需要关闭弹窗
@@ -216,7 +219,7 @@ export default {
 
 /* 内容 */
 .v-drawer-content {
-  position: absolute;
+  position: fixed;
   box-sizing: border-box;
   transform-origin: center;
   transition: all 0.3s ease-in-out;
@@ -227,6 +230,7 @@ export default {
 .v-drawer-content-visible {
   transform: translate3d(0, 0, 0) !important;
   visibility: visible;
+  opacity: 1 !important;
 }
 
 .v-drawer-left {
@@ -272,9 +276,10 @@ export default {
   z-index: 2000;
 }
 
-.v-drawer__scroll-view {
+.v-drawer_scroll-view {
   width: 100%;
-  height: auto;
+  height: 100%;
+  overflow-y: auto;
 }
 
 /* mode=center样式 */
@@ -284,13 +289,15 @@ export default {
   display: block;
   position: relative;
   background-color: #fff;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
 }
 
 .v-animation-zoom {
   transform: scale(1.2);
 }
 
-.v-drawer-content-visible.v-drawer-center {
+.v-drawer-content-visible .v-mode-center-box {
   transform: scale(1);
   opacity: 1;
 }

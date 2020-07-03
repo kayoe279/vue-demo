@@ -4,7 +4,7 @@ import config from './config' //开发环境域名配置
 import store from '../store/index'; // 携带参数可使用
 import router from '../router/index'; // 路由登录跳转可使用
 
-import utils from "../tools/utils"
+import utils from "../utils/utils"
 
 // 判断是否http|https开头的URL
 const isHttp = (url) => {
