@@ -14,7 +14,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 @font-face {
   font-family: "PingFang Regular";
   src: url("./assets/ttf/PingFang Regular.ttf");
@@ -29,7 +28,7 @@ html,
   font-size: 0.28rem;
   font-family: "PingFang Regular";
   line-height: 1.2 !important;
-  overflow-y:auto !important;
+  overflow-y: auto !important;
 }
 button {
   font-family: "PingFang Regular" !important;

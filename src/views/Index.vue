@@ -112,6 +112,7 @@ export default {
     ...mapActions(["clearList", "invokeList"]),
     // 排序
     sortAge() {
+      this.show2 = true;
       if (this.List.length === 0) return;
       this.List.sort(function(a, b) {
         return a.age - b.age;

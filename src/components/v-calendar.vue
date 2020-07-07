@@ -599,11 +599,9 @@ export default {
     },
     //滑块切换
     onSwiperChange(index) {
-      console.log(index);
       if (this.showCalendar) {
         this.calendarIndex = index;
         let calendar = this.calendars[this.calendarIndex];
-        console.log("calendar", calendar);
         this.date = new Date(calendar[22].dateObj); //取中间一天，保证是当前的月份
         this.refreshCalendars();
       }

@@ -8,7 +8,7 @@
     ></div>
     <div
       class="v-drawer-content"
-      @click="modeCenterClose(mode)"
+      @click.self="modeCenterClose(mode)"
       :class="[
 				showDrawer ? 'v-drawer-content-visible' : '',
 				'v-drawer-' + mode,
