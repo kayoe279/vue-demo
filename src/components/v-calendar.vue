@@ -760,11 +760,10 @@ export default {
       if (!newValue) {
         this.$emit("update:showCalendar", false);
       }
-    }
+    },
     // value(newValue, oldValue) {
     //   setTimeout(() => {
     //     this.setValue(newValue);
-    //     console.log("aaa")
     //   }, 0);
     // }
   }

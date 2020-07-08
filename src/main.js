@@ -46,6 +46,9 @@ Vue.prototype.$ajax = $ajax
 new Vue({
   router,
   store,
+  data: {
+    Bus: new Vue()
+  },
   render: h => h(App)
 }).$mount('#app-box')
 

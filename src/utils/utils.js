@@ -226,9 +226,9 @@ Utils.getWorkDate = function (curentDate, nextWorkDays) {
     let start = curentDate.getTime() + T;
     let end = start + nextWorkDays * T;
     let calDate = new Date();
-    const en = function (start, end) {
+    const en = function (s, e) {
         let holidays = 0;
-        for (let d = start; d < end; d += T) {
+        for (let d = s; d < e; d += T) {
             calDate.setTime(d);
             let day = calDate.getDay();
             if (day == 0 || day == 6) { //此处为节假日逻辑
@@ -241,12 +241,10 @@ Utils.getWorkDate = function (curentDate, nextWorkDays) {
     let year_time = calDate.getFullYear(); //获取年份
     let month_time = calDate.getMonth() + 1;
     let currentTime_time = calDate.getDate();
-    if (month_time >= 1 && month_time <= 9) { //1月到9月 前面加0
-        month_time = "0" + month_time;
-    }
-    if (currentTime_time >= 1 && currentTime_time <= 9) { //1号到9号 前面加0
-        currentTime_time = "0" + currentTime_time;
-    }
+    //1月到9月 前面加0
+    month_time = month_time >= 1 && month_time <= 9 ? "0" + month_time : month_time;
+    //1号到9号 前面加0
+    currentTime_time = currentTime_time >= 1 && currentTime_time <= 9 ? "0" + currentTime_time : currentTime_time;
     let workTime = year_time + '-' + month_time + '-' + currentTime_time;
     return workTime;
 }

@@ -8,6 +8,7 @@
     <div class="test-btn" @click="ClickLoading('loading','正在加载')">带文字的loading</div>
     <div class="test-btn" @click="ClickLoading('loading','黑色主题','dark')">黑色主题loading</div>
     <div class="test-btn" @click="ClickLoading('loading','请稍等','','cb')">可传回调</div>
+    <div class="test-btn" @click="ClickCoverLoading">整页面显示loading</div>
     <v-popup v-model="showOption" mode="center" borderRadius="6">
       <div class="optionsContent">
         <p>
@@ -63,9 +64,17 @@ export default {
           }
         });
       }, 2000);
+    },
+    ClickCoverLoading() {
+      this.$loading.coverLoading();
+      setTimeout(() => {
+        this.$loading.hideLoading();
+      }, 2000);
     }
   },
-  mounted() {}
+  mounted() {
+    this.ClickCoverLoading();
+  }
 };
 </script>
 <style lang="css">
