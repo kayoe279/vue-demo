@@ -15,12 +15,12 @@ import ajax from './api/api';
 import $ajax from "./api/request"
 
 
-// import { ToastPlugin, LoadingPlugin, AlertPlugin, ConfirmPlugin } from 'vux'
-// // 使用组件
-// Vue.use(ToastPlugin, { position: 'middle' })
-// Vue.use(LoadingPlugin)
-// Vue.use(AlertPlugin)
-// Vue.use(ConfirmPlugin)
+import { ToastPlugin, LoadingPlugin, AlertPlugin, ConfirmPlugin } from 'vux'
+// 使用组件
+Vue.use(ToastPlugin, { position: 'middle' })
+Vue.use(LoadingPlugin)
+Vue.use(AlertPlugin)
+Vue.use(ConfirmPlugin)
 
 // vant
 import Vant from 'vant';

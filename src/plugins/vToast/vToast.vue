@@ -135,6 +135,7 @@ export default {
 /* 内容 */
 .v-toast-box .v-toast-title {
   font-size: 14px;
+  word-break: break-all;
 }
 .v-toast-box .v-toast-title.limitTitle {
   max-width: 100px;

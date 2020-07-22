@@ -1,10 +1,10 @@
 import axios from 'axios';
-import QS from 'qs';
+import utils from "../utils/utils"
+// import QS from 'qs';
 import config from './config' //开发环境域名配置
 import store from '../store/index'; // 携带参数可使用
-import router from '../router/index'; // 路由登录跳转可使用
+// import router from '../router/index'; // 路由登录跳转可使用
 
-import utils from "../utils/utils"
 
 // 判断是否http|https开头的URL
 const isHttp = (url) => {
@@ -77,7 +77,7 @@ instance.interceptors.response.use(response => {
 })
 
 // 请求部分
-const getData = function (url, data, method, options = {}) {
+const request = function (url, data, method, options = {}) {
     options.headers = options.headers || {};
     let headers = {
         "Content-Type": options.headers.ContentType || "application/x-www-form-urlencoded"
@@ -106,12 +106,12 @@ const getData = function (url, data, method, options = {}) {
 
 // get请求
 const get = (url, data = {}, options = {}) => {
-    return getData(queryString(url, data), {}, "GET", options)
+    return request(queryString(url, data), {}, "GET", options)
 }
 
 // post请求
 const post = (url, data = {}, options = {}) => {
-    return getData(url, data, "POST", options);
+    return request(url, data, "POST", options);
 }
 
 export default {

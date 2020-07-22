@@ -213,14 +213,16 @@ export default {
   width: 50px;
   height: 50px;
   animation: loading-rotate 2s linear infinite;
+  transform-origin: center center;
 }
 
 .v-loading-box .path {
-  animation: loading-dash 1.5s ease-in-out infinite;
   stroke-dasharray: 90 120;
   stroke-dashoffset: 0;
   stroke-width: 3;
   stroke-linecap: round;
+  animation: loading-dash 1.5s ease-in-out infinite,
+    loading-color 6s ease-in-out infinite;
 }
 
 @keyframes loading-dash {
@@ -243,6 +245,23 @@ export default {
 @keyframes loading-rotate {
   to {
     transform: rotate(1turn);
+  }
+}
+
+@keyframes loading-color {
+  100%,
+  0% {
+    stroke: #409eff;
+  }
+  40% {
+    stroke: #d62d20;
+  }
+  66% {
+    stroke: #008744;
+  }
+  80%,
+  90% {
+    stroke: #ffa700;
   }
 }
 </style>

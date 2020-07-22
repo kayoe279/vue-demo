@@ -14,17 +14,17 @@ const installLoading = (Vue, options) => {
       instance.setDefaultOptions();
       instance.isCover = false;
       if (typeof settings === 'string') {
-        instance.title = settings;
-      } else if (typeof settings === 'object') {
-        settings = Object.assign({}, settings, options);
-        let { maskBgColor, theme, title, type, size, color } = settings;
-        if (maskBgColor) instance.maskBgColor = maskBgColor;
-        if (theme) instance.theme = theme;
-        if (title) instance.title = title;
-        if (type) instance.type = type;
-        if (size) instance.size = size;
-        if (color) instance.color = color;
+        settings = { title: settings };
       }
+      settings = Object.assign({}, settings, options);
+      let { maskBgColor, theme, title, type, size, color } = settings;
+      if (maskBgColor) instance.maskBgColor = maskBgColor;
+      if (theme) instance.theme = theme;
+      if (title) instance.title = title;
+      if (type) instance.type = type;
+      if (size) instance.size = size;
+      if (color) instance.color = color;
+
       instance.show = true;
       typeof cb == "function" && cb();
     },
@@ -34,7 +34,7 @@ const installLoading = (Vue, options) => {
       instance.isCover = true;
       if (typeof settings === 'string') {
         instance.title = settings;
-      } else if (typeof settings === 'object') {
+      } else {
         settings = Object.assign({}, settings, options);
         for (const key in settings) {
           if (instance[key] != undefined) instance[key] = settings[key]

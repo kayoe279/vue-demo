@@ -12,6 +12,15 @@
     <v-popup v-model="showOption" mode="center" borderRadius="6">
       <div class="optionsContent">
         <p>
+          <span>circleColor</span> 整页面loading颜色
+        </p>
+        <p>
+          <span>circleWidth</span> 整页面loading宽度(默认50px)
+        </p>
+        <p>
+          <span>circleHeight</span> 整页面loading高度(默认50px)
+        </p>
+        <p>
           <span>theme</span> 主题色(默认light),可选dark
         </p>
         <p>
@@ -63,7 +72,7 @@ export default {
             this.$toast("我是加载完成后调用的(#^.^#)");
           }
         });
-      }, 2000);
+      }, 3000);
     },
     ClickCoverLoading() {
       this.$loading.coverLoading();

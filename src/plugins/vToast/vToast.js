@@ -17,18 +17,17 @@ const installToast = (Vue, options) => {
     }
     let time = 1500;
     if (typeof settings === 'string') {
-      instance.title = settings;
-    } else if (typeof settings === 'object') {
-      settings = Object.assign({}, settings, options);
-      let { title, type, size, duration, position } = settings;
-      if (title) instance.title = title;
-      if (type) instance.type = type;
-      if (size) instance.size = size;
-      if (position) instance.position = position;
-      if (duration) {
-        instance.duration = duration;
-        time = duration;
-      }
+      settings = { title: settings };
+    }
+    settings = Object.assign({}, settings, options);
+    let { title, type, size, duration, position } = settings;
+    if (title) instance.title = title;
+    if (type) instance.type = type;
+    if (size) instance.size = size;
+    if (position) instance.position = position;
+    if (duration) {
+      instance.duration = duration;
+      time = duration;
     }
     instance.show = true;
     typeof cb == "function" && cb();

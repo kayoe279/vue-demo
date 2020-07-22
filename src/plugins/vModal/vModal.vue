@@ -192,7 +192,7 @@ export default {
 }
 
 .v-modal .v-modal-title {
-  padding-top: 20px;
+  padding-top: 15px;
   font-weight: 500;
   font-size: 18px;
   text-align: center;
@@ -202,7 +202,7 @@ export default {
   text-overflow: ellipsis;
 }
 .v-modal .v-modal-content-meeeage {
-  padding: 18px;
+  padding: 14px;
   font-size: 15px;
   text-align: center;
   color: #303133;

@@ -1,8 +1,8 @@
 <template>
-<!-- 接口测试 -->
+  <!-- 接口测试 -->
   <div class="test">
     <div v-for="(item, index) in workbenchList" :key="index">
-      <span>{{item.name}}</span>
+      <span>{{item.PetitionName}}</span>
     </div>
   </div>
 </template>
@@ -17,20 +17,34 @@ export default {
   },
   methods: {
     async getData() {
-      this.$utils.showLoading("正在加载");
-      this.$ajax
-        .post("kpapi/evafbappeal/search", {
-          currentPage: 1,
-          pageSize: 2,
-          mappingSql: "EvaFbAppeal.List",
-          orderby: "ModifiedOn desc",
-          searchDict: JSON.stringify({})
-        })
-        .then(resp => {
-          if (resp.ErrorCode == 0) {
-            console.log(resp);
-          }
-        });
+      this.$loading.coverLoading();
+      // this.$ajax
+      //   .post("kpapi/evafbappeal/search", {
+      //     currentPage: 1,
+      //     pageSize: 2,
+      //     mappingSql: "EvaFbAppeal.List",
+      //     orderby: "ModifiedOn desc",
+      //     searchDict: JSON.stringify({})loading
+      //   })
+      //   .then(resp => {
+      //     if (resp.ErrorCode == 0) {
+      //       console.log(resp);
+      //     }
+      //   });
+
+      let resp = await this.$ajax.post("kpapi/evafbappeal/search", {
+        currentPage: 1,
+        pageSize: 2,
+        mappingSql: "EvaFbAppeal.List",
+        orderby: "ModifiedOn desc",
+        searchDict: JSON.stringify({})
+      });
+      if (resp.ErrorCode == 0) {
+        this.workbenchList = resp.Data.List;
+      }
+      console.log(resp);
+      console.log("resp之后输出");
+      this.$loading.hideLoading();
     }
   },
   mounted() {
