@@ -18,7 +18,7 @@
         <span>showPubSub值:{{showPubSub}}</span>
       </div>
       <div class="box">
-        <div>VUEX控制</div>
+        <div>VUEX控制哒哒哒哒哒哒</div>
         <button @click="sortAge">按岁数排序</button>
         <ul>
           <li v-for="(item, index) in List" :key="index">
